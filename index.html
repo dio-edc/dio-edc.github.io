@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer; /* Changes the mouse to a pointer to indicate clickability */
+            transition: transform 0.2s; /* Smooth zoom effect on hover */
+        }
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Lightbox Overlay Styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">My Photography</h1>
+    
+    <div class="gallery">
+        <!-- Add your Flickr links here -->
+        <img src="https://live.staticflickr.com/65535/55502688926_076ab27d93_b.jpg" alt="Gallery image 1" onclick="openLightbox(this.src)">
+        <img src="https://live.staticflickr.com/65535/55502794373_a603106bbe_b.jpg" alt="Gallery image 2" onclick="openLightbox(this.src)">
+        <img src="ticflickr.com/65535/55305688289_0c95561cf2_b.jpg" alt="Gallery image 3" onclick="openLightbox(this.src)">
+    </div>
+
+    <!-- The Lightbox Container -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <!-- Lightbox JavaScript -->
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById("myLightbox").style.display = "flex";
+            document.getElementById("lightbox-img").src = imageSrc;
+        }
+
+        function closeLightbox() {
+            document.getElementById("myLightbox").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
